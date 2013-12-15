@@ -14,3 +14,4 @@
 [14-Dec-2013 14:08:24] PHP Notice:  Undefined offset: 0 in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12
 [14-Dec-2013 14:08:47] PHP Notice:  Undefined offset: 0 in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12
 [14-Dec-2013 14:09:39] PHP Notice:  Undefined index: tagsearch in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12
+[14-Dec-2013 15:39:06] PHP Notice:  Undefined index: tagsearch in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12

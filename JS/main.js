@@ -21,13 +21,25 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 		twitterpromise.then(function(response)
 		{
 			console.log(response.data);
+			$scope.tweets=response.data.statuses;
+			
 		});
 		
 		var facebookpromise = facebook.search(tag);
 		facebookpromise.then(function(response)
 		{
 			console.log(response.data.data);
+			var container = document.querySelector('#basic');
+ 			var msnry = new Masonry( container, {
+   			 columnWidth: 45,
+			 "isFitWidth": true,
+			 isInitLayout: false
+  			});
+			
+			msnry.layout();
 		});
+		
+		
 		
 	}
 

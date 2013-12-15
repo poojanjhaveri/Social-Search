@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="flatstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="flatstrap/css/bootstrap-theme.min.css">
 <script src="flatstrap/js/bootstrap.js"></script>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 
@@ -45,10 +46,28 @@
 </nav>
 
 <div style="height:400px;background-color:rgb(0,0,102)"></div>
-<div id="instagram-feed" align="center" ng-repeat ="image in images" style="float:left">
-<img  ng-src="{{image.images.low_resolution.url}}" style="margin-left:10px;margin-top:10px" >
+
+<div id="basic" class="container">
+<div id="instagram-feed-post" ng-repeat ="image in images">
+<img ng-src="{{image.images.low_resolution.url}}">
 <p>@{{image.user.username}}</p>
 </div>
+</div>
+
+
+<div id="twitter-feed" align="center" ng-repeat ="tweet in tweets" style="float:left">
+<img  ng-src="{{image.images.low_resolution.url}}" style="margin-left:10px;margin-top:10px" >
+<p>@{{tweet.text}}</p>
+<p>@{{tweet.user.screen_name}}</p>
+</div>
+
+<div id="twitter-feed" align="center" ng-repeat ="tweet in tweets" style="float:left">
+<img  ng-src="{{image.images.low_resolution.url}}" style="margin-left:10px;margin-top:10px" >
+<p>@{{tweet.text}}</p>
+<p>@{{tweet.user.screen_name}}</p>
+</div>
+
+
 <div style="height:400px;background-color:rgb(0,0,102)"></div>
 <div style="height:400px;background-color:rgb(0,0,102)"></div>
 <div style="height:400px;background-color:rgb(0,0,102)"></div>
@@ -57,6 +76,7 @@
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<script type="text/javascript" src="JS/masonry.js"></script>
 <script src="JS/main.js"></script>
 </body>
 </html>
