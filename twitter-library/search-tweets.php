@@ -18,7 +18,7 @@ $twitter = new Twitter\Search(array(
 ));
 
 $json = $twitter->authenticate()->get('search/tweets', array(
-	'q' => $tagsearch,
+	'q' => '%23'.$tagsearch,
 	'result_type'=>'recent'
 ));
 

@@ -1,13 +1,35 @@
 // JavaScript Document
 
 var app = angular.module('social-search-app',[]);
+
+
 app.controller('SocialSearchController',function($scope,instagram,twitter,facebook)
 {
 	
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    	var container = document.querySelector('#basic');
+ 			var msnry = new Masonry( container, {
+			"isFitWidth": true,
+			});
+			
+			var container = document.querySelector('#basictwitter');
+ 			var msnry = new Masonry( container, {
+			"isFitWidth": true,
+			});
+		
+		
+		
+		
+ })
+
+
+	
 	$scope.search=function()
 	{
+		
 		var tag = $scope.searchtext;
-		var instagrampromise = instagram.search(tag);
+		
+		var instagrampromise = instagram.search(tag.replace('#',''));
 		
 		instagrampromise.then(function(response)
 		{
@@ -15,6 +37,13 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 			console.log(images);
 			$scope.images=images;
 			$scope.loading=false;
+			
+			
+		
+ 			
+			
+			
+
 		});
 		
 		var twitterpromise = twitter.search(tag);
@@ -25,23 +54,29 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 			
 		});
 		
-		var facebookpromise = facebook.search(tag);
+		var facebookpromise = facebook.search(tag.replace('#',''));
 		facebookpromise.then(function(response)
 		{
 			console.log(response.data.data);
 			var container = document.querySelector('#basic');
  			var msnry = new Masonry( container, {
-   			 columnWidth: 45,
-			 "isFitWidth": true,
-			 isInitLayout: false
-  			});
+			"isFitWidth": true,
+			});
 			
-			msnry.layout();
+			var container = document.querySelector('#basictwitter');
+ 			var msnry = new Masonry( container, {
+			"isFitWidth": true,
+			});
+			
+			
+			
+			
 		});
 		
 		
-		
 	}
+	
+	
 
 });
 
