@@ -15,3 +15,14 @@
 [14-Dec-2013 14:08:47] PHP Notice:  Undefined offset: 0 in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12
 [14-Dec-2013 14:09:39] PHP Notice:  Undefined index: tagsearch in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12
 [14-Dec-2013 15:39:06] PHP Notice:  Undefined index: tagsearch in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12
+[16-Dec-2013 11:22:39] PHP Notice:  Undefined index: tagsearch in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweets.php on line 12
+[16-Dec-2013 11:23:09] PHP Notice:  Undefined index: long in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 13
+[16-Dec-2013 11:23:10] PHP Notice:  Use of undefined constant count - assumed 'count' in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 23
+[16-Dec-2013 11:23:57] PHP Notice:  Undefined index: lat in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 12
+[16-Dec-2013 11:23:57] PHP Notice:  Undefined index: long in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 13
+[16-Dec-2013 11:23:57] PHP Notice:  Use of undefined constant count - assumed 'count' in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 23
+[16-Dec-2013 11:24:17] PHP Notice:  Undefined index: long in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 13
+[16-Dec-2013 11:24:18] PHP Notice:  Use of undefined constant count - assumed 'count' in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 23
+[16-Dec-2013 11:24:33] PHP Notice:  Use of undefined constant count - assumed 'count' in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 23
+[16-Dec-2013 11:25:04] PHP Notice:  Undefined index: long in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 13
+[16-Dec-2013 12:45:28] PHP Notice:  Undefined index: long in /Applications/MAMP/htdocs/Github-repo/Social-Search/twitter-library/search-tweetsstream.php on line 13

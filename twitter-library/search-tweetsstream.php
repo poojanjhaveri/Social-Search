@@ -9,8 +9,9 @@ require_once 'credentials.php';
 require_once 'twitter/Base.php';
 require_once 'twitter/Search.php';
 
-$tagsearch = $_GET['tagsearch'];
-
+$lat = $_GET['lat'];
+$long = $_GET['long'];
+$radius = '5mi';
 
 $twitter = new Twitter\Search(array(
 	'consumer_key' => CONSUMER_KEY,
@@ -18,8 +19,10 @@ $twitter = new Twitter\Search(array(
 ));
 
 $json = $twitter->authenticate()->get('search/tweets', array(
-	'q' => '%23'.$tagsearch,
-	'result_type'=>'recent'
+	'q'=>'',
+	'result_type'=>'recent',
+	'geocode'=>strval($lat).','.strval($long).','.'10mi',
+	
 ));
 
 echo $json;

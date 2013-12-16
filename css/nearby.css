@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,900,700italic,700,500italic);
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+html
+{
+	height:100%;
+}
+
+
+body
+{
+	padding-top:50px;
+	background: url(../images/bg.png) repeat;
+	font-family: 'Roboto', sans-serif;
+	height:100%;
+}
+
+.navbar-brand
+{
+	font-family: 'Pacifico', cursive;
+	font-size:2em !important;
+	color:rgb(0,0,0) !important;
+}
+
+
+#map{ 
+			height: 100%;
+			margin: 0 auto;
+		}
+
