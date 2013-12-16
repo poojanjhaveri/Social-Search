@@ -9,14 +9,20 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     	var container = document.querySelector('#basic');
  			var msnry = new Masonry( container, {
-			"isFitWidth": true,
+		//	"isFitWidth": true,
 			});
+			
+			
 			
 			var container = document.querySelector('#basictwitter');
  			var msnry = new Masonry( container, {
 			"isFitWidth": true,
 			});
 		
+			var container = document.querySelector('#basicfacebook');
+ 			var msnry = new Masonry( container, {
+			"isFitWidth": true,
+			});
 		
 		
 		
@@ -57,6 +63,8 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 		var facebookpromise = facebook.search(tag.replace('#',''));
 		facebookpromise.then(function(response)
 		{
+			
+			$scope.posts=response.data.data;
 			console.log(response.data.data);
 			var container = document.querySelector('#basic');
  			var msnry = new Masonry( container, {
@@ -65,14 +73,13 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 			
 			var container = document.querySelector('#basictwitter');
  			var msnry = new Masonry( container, {
+		//	"isFitWidth": true,
+			});	
+		});
+		var container = document.querySelector('#basicfacebook');
+ 			var msnry = new Masonry( container, {
 			"isFitWidth": true,
 			});
-			
-			
-			
-			
-		});
-		
 		
 	}
 	
