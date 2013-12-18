@@ -16,7 +16,7 @@ TimeFrame : December 13 - December 17 2013
 Link : http://poojanjhaveri.com/socialsearch/
 
 <img src = "https://raw.github.com/poojanjhaveri/Social-Search/master/screenshots/module1.png">
-<br>
+
 
 
 <img src = "https://raw.github.com/poojanjhaveri/Social-Search/master/screenshots/module2.png">
