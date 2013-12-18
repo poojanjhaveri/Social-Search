@@ -2,7 +2,7 @@
 <html >
 <head>
 <meta charset="UTF-8">
-<title>Nearby Tweets</title>
+<title>Nearby Instagram Images</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <link rel="stylesheet" href="flatstrap/css/bootstrap.min.css">
@@ -22,9 +22,20 @@
   <div class="navbar-header">
     <a class="navbar-brand " href="#"><strong>Social Search</strong></a>
   </div>
+   <ul class="nav navbar-nav">
+   		<li class=""><a href="index.html">Search</a></li>
+      	<li class="active"><a href="map.html">Instagram on Map</a></li>
+    </ul>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search for location" id="searchlocation">
+      </div>
+      <button  class="btn btn-default" id="search">Search</button>
+    </form>
+    <p class="navbar-text navbar-right" id="trackLocation">Allow us to track your current location.</p>
 </nav>
 
-  <div id="map" class="col-lg-9">
+  <div id="map">
     </div>
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
