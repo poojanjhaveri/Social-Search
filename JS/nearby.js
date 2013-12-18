@@ -5,6 +5,8 @@ window.App={
 	GoogleMaps:{	
 			initialize:function()
 			{
+				
+				// Default the city and location to Los Angeles
 				 var cities={};
    				 cities['losangeles']=[34.082237,-118.247437];
     
@@ -20,8 +22,8 @@ window.App={
 					this.$directionsDisplay = new google.maps.DirectionsRenderer();
 					this.$currentposition= cities['losangeles'];
 					
-				 this.getLocation();	
-				 this.bindEventListeners();
+				 this.getLocation();				// get Current location and display it on Map
+				 this.bindEventListeners();			// Bind Event Listeners
 			},
 			
 			getLocation:function()
@@ -29,17 +31,18 @@ window.App={
 				
 			var self = this;
 
-			if (navigator.geolocation) { //Feature detection
+			if (navigator.geolocation) { 			//Feature detection
 			// Geolocation supported. Do something here.
 		
 				var success_handler = function(position) {
 					
 					$('#trackLocation').hide();
 					
-					
-					
+					// Save the current location given by browser, convert it into google format to use it late and save to current location variable
 					var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					self.$currentlocation = latlng;
+					
+					// AJAX Request to get photos near to current location from Instagram 
 					App.InstagramRequest.getPhotos(position.coords.latitude,position.coords.longitude);
 					self.$map.setCenter(latlng);
 					var marker = new google.maps.Marker({
@@ -48,9 +51,9 @@ window.App={
 					  icon:'http://youarehere.fogplex.org/arrow/arrow-trans128x128.png',
 					  map: self.$map
 				  });
-				  marker.setMap(self.$map);
+				  marker.setMap(self.$map);		// SHow 'You are here MARKER'
 			};
-			
+			// Error To display if the user decides not to allow tracking current location
 			var error_handler = function(err)   {
 			document.getElementById('trackLocation').innerHTML="Sorry, GeoLocation is not supported by your browser. This works bests in Chrome or Safari";
 			};
@@ -66,13 +69,14 @@ window.App={
 				
 			},
 			
+			// Renders instagram API to html
 			renderInstagramPhotos:function(response)
 			{
 				var self = this;
 				self.$map.setZoom(16);
 				console.log(response);
 				var i,marker;
-				for(i=0;i<response.data.length;i++)
+				for(i=0;i<response.data.length;i++)				// For every photo place a marker on the map
 				{
 					var photo = response.data[i];
 					
@@ -80,10 +84,10 @@ window.App={
 					var caption="";
 					if(photo.caption!=null)
 					{
-						caption = photo.caption.text;
+						caption = photo.caption.text;			
 					}
 					
-					
+					// Set the marker with icon as thumbnail of the image
 					marker = new google.maps.Marker({
 					  title:caption,
 					  position: latlng,
@@ -97,7 +101,7 @@ window.App={
 					  map: self.$map
 				  });
 				  marker.setMap(self.$map);
-				  App.GoogleMaps.openMarkerInstagram(marker,photo);
+				  App.GoogleMaps.openMarkerInstagram(marker,photo);		// Bind Event Listener on every marker
 				}
 				
 				
@@ -113,8 +117,11 @@ window.App={
 				var self = this;
 				google.maps.event.addListener(markerobject, 'click', function() {
 					 
-					App.GoogleMaps.showDirections(markerobject);
+					App.GoogleMaps.showDirections(markerobject);		// AJAX request for directions
 					 
+					 
+					 
+					 // Embed instagram Frame on the marker infowindow
 					 self.$infowindow.setContent('<div><iframe src="'+photo.link+'embed/" width="300" height="300" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div><a href="http://maps.google.com/?saddr='+self.$currentlocation.nb+','+self.$currentlocation.ob+'&daddr='+photo.location.latitude+','+photo.location.longitude+'" target=_new>Directions</a>');
 					 
 					  self.$infowindow.open(self.$map,markerobject);
@@ -122,6 +129,8 @@ window.App={
   				});
 			},
 			
+			
+			// Function for getting directions from the current location to location of the image clicked
 			showDirections:function(markerobject) {
 
 				var self= this;
@@ -134,28 +143,30 @@ window.App={
 				var request = {
 					origin : start,
 					destination : end,
-					travelMode : google.maps.TravelMode.WALKING
+					travelMode : google.maps.TravelMode.WALKING			// Traveling mode walkinf
 				};
-				self.$directionsService.route(request, function(response, status) {
+				self.$directionsService.route(request, function(response, status) {			// Requesting to Durections API
 					if (status == google.maps.DirectionsStatus.OK) {
 						console.log(response);
 						self.$map.preserveViewport=true;
-						self.$directionsDisplay.setDirections(response);
+						self.$directionsDisplay.setDirections(response);					// Render it on the map
 					
 					}
-					
+					// Append the distance to infowindow
 				self.$infowindow.setContent(self.$infowindow.getContent() +'<div>'+response.routes[0].legs[0].distance.text+'</div>');
 					
 				});
 			},
 			
+			
+			// Function to bind event listeners to DOM
 			bindEventListeners:function()
 			{
 				var self = this;
 			 $('#search').on('click',function(event){
 				event.preventDefault();
 				var searchTerm = $('#searchlocation').val();
-				var geocoder = new google.maps.Geocoder();
+				var geocoder = new google.maps.Geocoder();			// Geocode the address typed
 				geocoder.geocode({
 					address:searchTerm
 					},function(results,status){
@@ -175,7 +186,7 @@ window.App={
 					  });
 					  marker.setMap(self.$map);
 						
-						App.InstagramRequest.getPhotos(latlng.nb,latlng.ob);
+						App.InstagramRequest.getPhotos(latlng.nb,latlng.ob);			// send a request to instagram with coordinates
 					}
 					else {
         						alert("Geocoder failed due to: " + status);
@@ -191,7 +202,7 @@ window.App={
 		
 	},
 	
-	
+	// Literal for managing requests to Instagram
 	InstagramRequest:{
 		getPhotos:function(lat,long)
 		{

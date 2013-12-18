@@ -7,6 +7,10 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 {
 	
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		
+		
+		// Update the layout for all masonry cards
+		
     	var container = document.querySelector('#basic');
  			var msnry = new Masonry( container, {
 		//	"isFitWidth": true,
@@ -29,19 +33,19 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
  })
 
 
-	
+	// Function that is triggered when something is searched
 	$scope.search=function()
 	{
 		
 		var tag = $scope.searchtext;
 		
-		var instagrampromise = instagram.search(tag.replace('#',''));
+		var instagrampromise = instagram.search(tag.replace('#',''));		// For instagram replace # by '' as instagram API allows searching without #
 		
 		instagrampromise.then(function(response)
 		{
 			var images = response.data.data;
 			console.log(images);
-			$scope.images=images;
+			$scope.images=images;											// Pass it to the scope
 			$scope.loading=false;
 			
 			
@@ -56,7 +60,7 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 		twitterpromise.then(function(response)
 		{
 			console.log(response.data);
-			$scope.tweets=response.data.statuses;
+			$scope.tweets=response.data.statuses;							// Pass Tweets Json to scope
 			
 		});
 		
@@ -64,7 +68,7 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 		facebookpromise.then(function(response)
 		{
 			
-			$scope.posts=response.data.data;
+			$scope.posts=response.data.data;								// PAss post json data to scope
 			console.log(response.data.data);
 			var container = document.querySelector('#basic');
  			var msnry = new Masonry( container, {
@@ -87,6 +91,8 @@ app.controller('SocialSearchController',function($scope,instagram,twitter,facebo
 
 });
 
+
+// Service to request photos from Instagram API
 app.service('instagram',function($http)
 {
 	this.search=function(tag)
@@ -98,6 +104,7 @@ app.service('instagram',function($http)
 	};
 });
 
+// Service to request photos from Twitter API
 app.service('twitter',function($http)
 {
 	this.search=function(tag)
@@ -109,6 +116,7 @@ app.service('twitter',function($http)
 	};
 });
 
+// Service to request photos from Facebook API
 app.service('facebook',function($http)
 {
 	this.search=function(tag)
